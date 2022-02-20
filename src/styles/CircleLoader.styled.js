@@ -12,8 +12,6 @@ const CircleLoader = styled.div`
   width: 120px;
   height: 120px;
   animation: ${spin} 2s linear infinite;
-
-  margin-top: 100px;
 `;
 
 export default CircleLoader;
