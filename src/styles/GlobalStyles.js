@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
     color: hsl(192, 100%, 9%);
     background: #121212;
     font-size: 1.15em;
+    height: 100vh;
   }
 
   a {

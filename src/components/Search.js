@@ -15,8 +15,10 @@ const Search = () => {
 
   // 검색 버튼을 클릭했을 때 호출되는 함수
   const searchPlayer = () => {
+    // fetchPlayerNum action을 호출한다.
     dispatch(fetchPlayerNum(playerNameInput.current.value));
   };
+
   return (
     <SearchContainer>
       <img src={logoImage} alt='logo' />

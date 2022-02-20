@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import Loading from './Loading.js';
 import Noplayer from './Noplayer.js';
 
+import { FlexContainer } from '../styles/FlexContainer.styled';
+
 const MatchLog = () => {
   const state = useSelector((state) => state);
   const { playerNum, playerName, firstVisit, isPlayerExist } =
@@ -11,7 +13,11 @@ const MatchLog = () => {
   const { isLoading } = state.loadingReducer;
 
   if (isLoading) {
-    return <Loading />;
+    return (
+      <FlexContainer>
+        <Loading />
+      </FlexContainer>
+    );
   }
   if (firstVisit) {
     return null;
