@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;
   }
   body {
-    color: hsl(192, 100%, 9%);
+    color: #fff;
     background: #121212;
     font-size: 1.15em;
     height: 100vh;
