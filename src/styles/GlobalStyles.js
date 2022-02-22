@@ -9,10 +9,14 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;
   }
   body {
-    color: #fff;
+    color: #b3b3b3;
     background: #121212;
     font-size: 1.15em;
     height: 100vh;
+  }
+
+  h1{
+    color: #fff;
   }
 
   a {

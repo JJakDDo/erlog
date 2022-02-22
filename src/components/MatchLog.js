@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Loading from './Loading.js';
 import Noplayer from './Noplayer.js';
 import LogInfo from './LogInfo.js';
+import MostPlayedCharacter from './MostPlayedCharacter.js';
 
 import FlexContainer from '../styles/FlexContainer.styled.js';
 
@@ -25,6 +26,7 @@ const MatchLog = () => {
   return (
     <FlexContainer>
       <LogInfo />
+      <MostPlayedCharacter />
     </FlexContainer>
   );
 };

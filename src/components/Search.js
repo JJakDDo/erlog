@@ -3,7 +3,7 @@ import { FaSearch } from 'react-icons/fa';
 
 import { SearchContainer, SearchForm } from '../styles/SearchContainer.styled';
 import Input from '../styles/Input.styled';
-import Button from '../styles/Button.styled';
+import SearchButton from '../styles/SearchButton.styled';
 
 import logoImage from '../img/logo/er_Logo_White.png';
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,9 +27,9 @@ const Search = () => {
           placeholder='플레이어 닉네임을 입력하세요...'
           ref={playerNameInput}
         />
-        <Button onClick={searchPlayer}>
+        <SearchButton onClick={searchPlayer}>
           <FaSearch />
-        </Button>
+        </SearchButton>
       </SearchForm>
     </SearchContainer>
   );

@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-  background: transparent;
-  color: #666;
-  border: 0;
-  cursor: pointer;
-
+  border-radius: 10px;
+  width: 5rem;
+  height: 2rem;
+  background: #00a7ff;
+  color: #fff;
+  border: none;
   &:hover {
-    color: #000;
+    background: #0d6ce8;
+    color: #fff;
   }
 `;
 

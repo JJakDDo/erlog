@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /src/img
+/public/img
 .env
 
 # testing
