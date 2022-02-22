@@ -6,7 +6,7 @@ import FlexContainer from '../styles/FlexContainer.styled';
 const Loading = () => {
   return (
     <FlexContainer>
-      <CircleLoader style={{ 'margin-top': '100px' }} />
+      <CircleLoader style={{ marginTop: '100px' }} />
     </FlexContainer>
   );
 };

@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux';
 
 import Loading from './Loading.js';
 import Noplayer from './Noplayer.js';
+import LogInfo from './LogInfo.js';
+
+import FlexContainer from '../styles/FlexContainer.styled.js';
 
 const MatchLog = () => {
   const state = useSelector((state) => state);
@@ -19,7 +22,11 @@ const MatchLog = () => {
   if (!isPlayerExist) {
     return <Noplayer />;
   }
-  return <h2>{playerNum}</h2>;
+  return (
+    <FlexContainer>
+      <LogInfo />
+    </FlexContainer>
+  );
 };
 
 export default MatchLog;
