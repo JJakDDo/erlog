@@ -4,6 +4,7 @@ export const NO_PLAYER = 'NO_PLAYER';
 export const START_LOADING = 'START_LOADING';
 export const STOP_LOADING = 'STOP_LOADING';
 export const SET_TOP3_INFO = 'SET_TOP3_INFO';
+export const CHANGE_MODE = 'CHANGE_MODE';
 
 // 비동기적인 작업 (axios)를 하기때문에 Redux-thunk로 객체 대신 함수를 return 한다.
 export const fetchPlayerNum = (name) => async (dispatch) => {
@@ -60,6 +61,7 @@ export const fetchPlayerNum = (name) => async (dispatch) => {
 
       // Loading 컴포넌트가 제대로 작동하는지 보기위해서 1초의 딜레이를 주었다.
       setTimeout(() => {
+        dispatch(changeMode(0));
         dispatch(stopLoading());
       }, 1500);
     }, 1000);
@@ -86,5 +88,12 @@ export const startLoading = () => {
 export const stopLoading = () => {
   return {
     type: STOP_LOADING,
+  };
+};
+
+export const changeMode = (mode) => {
+  return {
+    type: CHANGE_MODE,
+    payload: mode,
   };
 };

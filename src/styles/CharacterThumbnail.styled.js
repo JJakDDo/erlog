@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CharacterThumbnail = styled.div`
+export const CharacterThumbnail = styled.div`
   background-image: ${({ characterCode }) => {
     if (characterCode > 0) {
       return `url(/img/character/${characterCode}/mini.png)`;
@@ -36,4 +36,6 @@ const CharacterThumbnail = styled.div`
   }}
 `;
 
-export default CharacterThumbnail;
+export const Text = styled.p`
+  font-size: 1rem;
+`;

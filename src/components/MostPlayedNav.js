@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../styles/Nav.styled';
+import { changeMode } from '../actions';
 
 const MostPlayedNav = () => {
-  const [left, setLeft] = useState(0);
+  const state = useSelector((state) => state.mostPlayedReducer);
+  const { currentMode } = state;
+  const dispatch = useDispatch();
 
   const handleClick = (value) => {
-    setLeft(value);
+    dispatch(changeMode(value));
   };
 
   return (
-    <Nav left={left}>
+    <Nav left={currentMode * 100}>
       <li onClick={() => handleClick(0)}>솔로</li>
-      <li onClick={() => handleClick(100)}>듀오</li>
-      <li onClick={() => handleClick(200)}>스쿼드</li>
+      <li onClick={() => handleClick(1)}>듀오</li>
+      <li onClick={() => handleClick(2)}>스쿼드</li>
       <div></div>
     </Nav>
   );
