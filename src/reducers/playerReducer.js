@@ -93,19 +93,19 @@ const playerReducer = (state = initialState, action) => {
     // 유저의 탑3 캐릭터 정보를 저장한다.
     case SET_TOP3_INFO: {
       const { userInfo } = action.payload;
-      const tempInfo = [...initialState.mostPlayed];
+      const tempInfo = [[], [], []];
       userInfo.forEach((info, index) => {
         // 탑3 캐릭터가 존재하면 새로운 정보로 저장하고
         // 없으면 디폴트 값으로 유지된다.
         if (info.length) {
           info.forEach((char, i) => {
             const { characterCode, totalGames, wins, top3 } = char;
-            tempInfo[index][i] = {
+            tempInfo[index].push({
               characterCode,
               totalGames,
               wins,
               top3,
-            };
+            });
           });
         }
       });
