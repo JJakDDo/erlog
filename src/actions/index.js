@@ -41,23 +41,23 @@ export const fetchPlayerNum = (name) => async (dispatch) => {
           },
         }
       );
+      const newUserStats = [[], [], []];
       if (response.data.code === 200) {
         const { userStats } = response.data;
-        const newUserStats = [[], [], []];
 
         // 유저의 플레이 정보 중 팀모드가 없다면 빈 객체로 넣어주고
         // 있으면 해당 유저의 팀모드 캐릭터 정보를 넣어준다.
         userStats.forEach((stat) => {
           newUserStats[stat.matchingTeamMode - 1] = stat.characterStats;
         });
-
-        dispatch({
-          type: SET_TOP3_INFO,
-          payload: {
-            userInfo: newUserStats,
-          },
-        });
       }
+
+      dispatch({
+        type: SET_TOP3_INFO,
+        payload: {
+          userInfo: newUserStats,
+        },
+      });
 
       // Loading 컴포넌트가 제대로 작동하는지 보기위해서 1초의 딜레이를 주었다.
       setTimeout(() => {
