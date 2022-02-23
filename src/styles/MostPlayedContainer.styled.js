@@ -6,6 +6,7 @@ const MostPlayedContainer = styled.div`
   align-items: flex-end;
   width: 800px;
   margin-top: 50px;
+  margin-bottom: 50px;
 `;
 
 export default MostPlayedContainer;

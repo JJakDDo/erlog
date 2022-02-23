@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
   }
   body {
     color: #b3b3b3;
@@ -23,6 +24,7 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+
 `;
 
 export default GlobalStyles;
