@@ -109,7 +109,7 @@ const playerReducer = (state = initialState, action) => {
           });
         }
       });
-
+      console.log(tempInfo);
       return {
         ...state,
         mostPlayed: tempInfo,
