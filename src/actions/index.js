@@ -5,6 +5,7 @@ export const START_LOADING = 'START_LOADING';
 export const STOP_LOADING = 'STOP_LOADING';
 export const SET_TOP3_INFO = 'SET_TOP3_INFO';
 export const CHANGE_MODE = 'CHANGE_MODE';
+export const SET_RANK_INFO = 'SET_RANK_INFO';
 
 // 비동기적인 작업 (axios)를 하기때문에 Redux-thunk로 객체 대신 함수를 return 한다.
 export const fetchPlayerNum = (name) => async (dispatch) => {
@@ -41,21 +42,46 @@ export const fetchPlayerNum = (name) => async (dispatch) => {
           },
         }
       );
-      const newUserStats = [[], [], []];
+      const newMostPlayed = [[], [], []];
+      const newRankInfo = [{}, {}, {}];
       if (response.data.code === 200) {
         const { userStats } = response.data;
 
         // 유저의 플레이 정보 중 팀모드가 없다면 빈 객체로 넣어주고
         // 있으면 해당 유저의 팀모드 캐릭터 정보를 넣어준다.
         userStats.forEach((stat) => {
-          newUserStats[stat.matchingTeamMode - 1] = stat.characterStats;
+          // 유저 모드 별 랭크 정보 저장하기
+          const {
+            mmr,
+            rank,
+            totalGames,
+            totalWins,
+            averageRank,
+            averageKills,
+            averageAssistants,
+            top3,
+          } = stat;
+          newRankInfo[stat.matchingTeamMode - 1] = {
+            mmr,
+            rank,
+            totalGames,
+            totalWins,
+            averageRank,
+            averageKills,
+            averageAssistants,
+            top3,
+          };
+
+          // 최다 플레이수 캐릭터 정보 저장하기
+          newMostPlayed[stat.matchingTeamMode - 1] = stat.characterStats;
         });
       }
 
       dispatch({
-        type: SET_TOP3_INFO,
+        type: SET_RANK_INFO,
         payload: {
-          userInfo: newUserStats,
+          mostPlayed: newMostPlayed,
+          rankInfo: newRankInfo,
         },
       });
 

@@ -1,4 +1,4 @@
-import { SET_PLAYER_NUM, NO_PLAYER, SET_TOP3_INFO } from '../actions';
+import { SET_PLAYER_NUM, NO_PLAYER, SET_RANK_INFO } from '../actions';
 
 const initialState = {
   playerNum: 0,
@@ -67,6 +67,7 @@ const initialState = {
       },
     ],
   ],
+  rankInfo: [{}, {}, {}],
 };
 
 const playerReducer = (state = initialState, action) => {
@@ -91,10 +92,10 @@ const playerReducer = (state = initialState, action) => {
       };
     }
     // 유저의 탑3 캐릭터 정보를 저장한다.
-    case SET_TOP3_INFO: {
-      const { userInfo } = action.payload;
+    case SET_RANK_INFO: {
+      const { mostPlayed, rankInfo } = action.payload;
       const tempInfo = [[], [], []];
-      userInfo.forEach((info, index) => {
+      mostPlayed.forEach((info, index) => {
         // 탑3 캐릭터가 존재하면 새로운 정보로 저장하고
         // 없으면 디폴트 값으로 유지된다.
         if (info.length) {
@@ -109,10 +110,10 @@ const playerReducer = (state = initialState, action) => {
           });
         }
       });
-      console.log(tempInfo);
       return {
         ...state,
         mostPlayed: tempInfo,
+        rankInfo,
       };
     }
     default:

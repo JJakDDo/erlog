@@ -7,6 +7,10 @@ const CurrentMostPlayed = styled.div`
   margin-top: 10px;
   margin-bottom: 50px;
   overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    width: 500px;
+  }
 `;
 
 export default CurrentMostPlayed;
