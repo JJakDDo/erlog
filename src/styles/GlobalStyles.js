@@ -25,6 +25,10 @@ const GlobalStyles = createGlobalStyle`
     color: inherit;
   }
 
+  h1,h2,h3,h4,p,span{    
+    cursor: default;
+  }
+
 `;
 
 export default GlobalStyles;

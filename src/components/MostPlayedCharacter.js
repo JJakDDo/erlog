@@ -12,18 +12,6 @@ const MostPlayedCharacter = () => {
   const { mostPlayed } = useSelector((state) => state.playerReducer);
   const { currentMode } = useSelector((state) => state.mostPlayedReducer);
 
-  const navbarRef = useRef(null);
-
-  // 자동으로 스크롤하기 위해서 useRef를 사용했다.
-  // Styled Component에 useRef를 사용하면 에러가 발생해서 div를 새로 생성했다.
-  const scrollDown = () => {
-    navbarRef.current.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    scrollDown();
-  }, [mostPlayed]);
-
   return (
     <FlexContainer>
       <CurrentMostPlayed>
@@ -48,7 +36,6 @@ const MostPlayedCharacter = () => {
           })}
         </MostPlayedContainer>
       </CurrentMostPlayed>
-      <div ref={navbarRef}></div>
       <MostPlayedNav />
     </FlexContainer>
   );

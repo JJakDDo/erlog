@@ -16,6 +16,10 @@ const MostPlayedContainer = styled.section`
     align-items: flex-end;
     width: 800px;
   }
+
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    width: 1500px;
+  }
 `;
 
 export default MostPlayedContainer;
