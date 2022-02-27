@@ -6,6 +6,7 @@ import Noplayer from './Noplayer.js';
 import LogInfo from './LogInfo.js';
 import MostPlayedCharacter from './MostPlayedCharacter.js';
 import RankInfo from './RankInfo.js';
+import MatchInfo from './MatchInfo';
 
 import FlexContainer from '../styles/FlexContainer.styled.js';
 
@@ -28,6 +29,7 @@ const MatchLog = () => {
       <LogInfo />
       <MostPlayedCharacter />
       <RankInfo />
+      <MatchInfo />
     </FlexContainer>
   );
 };

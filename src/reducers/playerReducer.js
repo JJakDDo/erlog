@@ -1,4 +1,9 @@
-import { SET_PLAYER_NUM, NO_PLAYER, SET_RANK_INFO } from '../actions';
+import {
+  SET_PLAYER_NUM,
+  NO_PLAYER,
+  SET_RANK_INFO,
+  SET_MATCH_INFO,
+} from '../actions';
 
 const initialState = {
   playerNum: 0,
@@ -68,6 +73,7 @@ const initialState = {
     ],
   ],
   rankInfo: [{}, {}, {}],
+  matchInfo: [],
 };
 
 const playerReducer = (state = initialState, action) => {
@@ -114,6 +120,19 @@ const playerReducer = (state = initialState, action) => {
         ...state,
         mostPlayed: tempInfo,
         rankInfo,
+      };
+    }
+    // 유저의 매치 정보를 저장한다.
+    case SET_MATCH_INFO: {
+      const { matchInfo } = action.payload;
+      matchInfo.map((info) => {
+        return {
+          ...info,
+        };
+      });
+      return {
+        ...state,
+        matchInfo,
       };
     }
     default:

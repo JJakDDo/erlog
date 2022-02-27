@@ -63,9 +63,11 @@ const Mode = ({
     if (mmr >= 2600 && rank <= 200) {
       tier = mmrToText.length - 1;
       rankText = 'eternity';
+      lp = mmr - 2600;
     } else if (mmr >= 2400) {
       tier = mmrToText.length - 2;
       rankText = 'demigod';
+      lp = mmr - 2400;
     } else {
       tier = Math.floor(mmr / 100);
       if (tier >= 20) {
@@ -85,9 +87,8 @@ const Mode = ({
           rankText = 'unrank';
         }
       }
+      lp = mmr % 100;
     }
-
-    lp = mmr % 100;
   };
 
   getRank(mmr, rank);
