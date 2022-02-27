@@ -5,6 +5,7 @@ const FlexContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100%;
 `;
 
 export default FlexContainer;

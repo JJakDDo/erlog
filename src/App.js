@@ -20,6 +20,7 @@ const theme = {
     header: '#ebfbff',
     body: '#fff',
     footer: '#003333',
+    card: '#404040',
   },
   mobile: '768px',
 };

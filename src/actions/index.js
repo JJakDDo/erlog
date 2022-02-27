@@ -6,6 +6,7 @@ export const STOP_LOADING = 'STOP_LOADING';
 export const SET_TOP3_INFO = 'SET_TOP3_INFO';
 export const CHANGE_MODE = 'CHANGE_MODE';
 export const SET_RANK_INFO = 'SET_RANK_INFO';
+export const SET_MATCH_INFO = 'SET_MATCH_INFO';
 
 // 비동기적인 작업 (axios)를 하기때문에 Redux-thunk로 객체 대신 함수를 return 한다.
 export const fetchPlayerNum = (name) => async (dispatch) => {
@@ -85,11 +86,62 @@ export const fetchPlayerNum = (name) => async (dispatch) => {
         },
       });
 
-      // Loading 컴포넌트가 제대로 작동하는지 보기위해서 1초의 딜레이를 주었다.
-      setTimeout(() => {
-        dispatch(changeMode(0));
-        dispatch(stopLoading());
-      }, 1500);
+      // 1초 뒤에 해당 유저의 매치 로그를 가져온다.
+      setTimeout(async () => {
+        const response = await axios.get(
+          `${process.env.REACT_APP_BASEURL}/v1/user/games/${userNum}`,
+          {
+            headers: {
+              'x-api-key': process.env.REACT_APP_API_KEY,
+            },
+          }
+        );
+        const newMatchLog = [];
+        if (response.data.code === 200) {
+          const { userGames } = response.data;
+          userGames.forEach((game) => {
+            // 매치 정보를 가져온다.
+            const {
+              gameRank,
+              seasonId,
+              matchingTeamMode,
+              characterNum,
+              playerKill,
+              playerAssistant,
+              monsterKill,
+              mmrBefore,
+              damageToPlayer,
+              mmrGain,
+            } = game;
+
+            newMatchLog.push({
+              gameRank,
+              seasonId,
+              matchingTeamMode,
+              characterNum,
+              playerKill,
+              playerAssistant,
+              monsterKill,
+              mmrBefore,
+              damageToPlayer,
+              mmrGain,
+            });
+          });
+        }
+
+        dispatch({
+          type: SET_MATCH_INFO,
+          payload: {
+            matchInfo: newMatchLog,
+          },
+        });
+
+        // Loading 컴포넌트가 제대로 작동하는지 보기위해서 1초의 딜레이를 주었다.
+        setTimeout(() => {
+          dispatch(changeMode(0));
+          dispatch(stopLoading());
+        }, 1500);
+      }, 1000);
     }, 1000);
   } else {
     dispatch({
