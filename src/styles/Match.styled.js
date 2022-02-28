@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const MatchContainer = styled.div`
   width: 80vw;
+  max-width: 1000px;
   height: 120px;
   background: ${({ theme }) => theme.colors.card};
   margin: 10px 0;

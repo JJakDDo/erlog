@@ -7,6 +7,7 @@ export const SET_TOP3_INFO = 'SET_TOP3_INFO';
 export const CHANGE_MODE = 'CHANGE_MODE';
 export const SET_RANK_INFO = 'SET_RANK_INFO';
 export const SET_MATCH_INFO = 'SET_MATCH_INFO';
+export const SET_MODE_TO_DISPLAY = 'SET_MODE_TO_DISPLAY';
 
 // 비동기적인 작업 (axios)를 하기때문에 Redux-thunk로 객체 대신 함수를 return 한다.
 export const fetchPlayerNum = (name) => async (dispatch) => {
@@ -172,6 +173,13 @@ export const stopLoading = () => {
 export const changeMode = (mode) => {
   return {
     type: CHANGE_MODE,
+    payload: mode,
+  };
+};
+
+export const setModeToDisplay = (mode) => {
+  return {
+    type: SET_MODE_TO_DISPLAY,
     payload: mode,
   };
 };
