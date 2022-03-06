@@ -133,7 +133,7 @@ const Mode = ({
             </RankInfoTextContainer>
             <RankInfoTextContainer>
               <h3>Top3</h3>
-              <span>{top3 * 100}%</span>
+              <span>{Number(top3 * 100).toFixed(2)}%</span>
             </RankInfoTextContainer>
           </RankInfoContainer>
         </>
